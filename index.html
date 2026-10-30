@@ -20,7 +20,7 @@ h2{font-size:19px;margin:0 0 12px}.sub{color:var(--muted);font-size:13px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--mint);border-radius:12px;padding:11px;text-align:center}.stat b{display:block;font-size:20px}.stat span{font-size:11px;color:var(--muted)}
 .timeline{display:grid;gap:10px}.time{display:flex;justify-content:space-between;gap:10px;font-size:14px}.time b{font-weight:650}
 .tabs{display:flex;gap:7px;overflow:auto;margin:12px 0}.tab,button{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 14px;font-weight:650;color:var(--ink);cursor:pointer}.tab.active,.primary{background:var(--green);color:white;border-color:var(--green)}
-.exercise{padding:13px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border:0}.exhead{display:flex;justify-content:space-between;gap:10px}.exercise label{display:flex;align-items:center;gap:9px}.exercise input[type=checkbox]{width:19px;height:19px;accent-color:var(--green)}.reps{color:var(--green);font-size:13px;font-weight:700;margin-top:5px}.tip{font-size:13px;color:var(--muted);margin-top:5px}
+.exercise{display:grid;grid-template-columns:88px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);align-items:start}.exercise:last-child{border:0}.exercise img{width:88px;height:88px;object-fit:cover;border-radius:12px;background:var(--mint)}.exbody{min-width:0}.exhead{display:flex;justify-content:space-between;gap:8px;align-items:start}.exhead b{font-size:14px}.exercise label{font-size:12px;white-space:nowrap}.exercise label{display:flex;align-items:center;gap:9px}.exercise input[type=checkbox]{width:19px;height:19px;accent-color:var(--green)}.reps{color:var(--green);font-size:13px;font-weight:700;margin-top:5px}.tip{font-size:13px;color:var(--muted);margin-top:5px}
 input,textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;background:white;color:var(--ink)}textarea{min-height:75px}
 label.field{display:block;font-size:13px;color:var(--muted);margin:9px 0}label.field input{margin-top:5px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progress{height:9px;background:#e5ece7;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--green);width:0}
@@ -71,30 +71,30 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}
 <script>
 const plans={
 A:{name:"Segunda-feira · Corpo inteiro A",items:[
-["Leg press","2 × 12","Pés à largura dos ombros; desce sem levantar a bacia."],
-["Puxada frontal","2 × 12","Puxa a barra à frente, em direção à parte superior do peito."],
-["Hip thrust","2 × 12","Eleva a bacia e contrai os glúteos sem arquear as costas."],
-["Chest press","2 × 12","Empurra as pegas à altura do peito, regressando devagar."],
-["Abdominal na máquina","2 × 12","Executa lentamente, sem puxar o pescoço."]]},
+["Leg press","2 × 12","Pés à largura dos ombros; desce sem levantar a bacia.","legpress.jpg"],
+["Puxada frontal","2 × 12","Puxa a barra à frente, em direção à parte superior do peito.","shoulder.jpg"],
+["Hip thrust","2 × 12","Eleva a bacia e contrai os glúteos sem arquear as costas.","hipthrust.jpg"],
+["Chest press","2 × 12","Empurra as pegas à altura do peito, regressando devagar.","shoulder.jpg"],
+["Abdominal na máquina","2 × 12","Executa lentamente, sem puxar o pescoço.","plank.jpg"]]},
 B:{name:"Terça-feira · Corpo inteiro B",items:[
-["Agachamento goblet","2 × 12","Halter junto ao peito; desce com controlo."],
-["Remada sentada","2 × 12","Puxa os cotovelos para trás, mantendo o tronco estável."],
-["Cadeira flexora","2 × 12","Puxa os calcanhares para trás sem balanço."],
-["Shoulder press","2 × 12","Empurra para cima sem bloquear os cotovelos."],
-["Prancha","2 × 20 segundos","Corpo alinhado e abdómen contraído."]]},
+["Agachamento goblet","2 × 12","Halter junto ao peito; desce com controlo.","squat.jpg"],
+["Remada sentada","2 × 12","Puxa os cotovelos para trás, mantendo o tronco estável.","deadlift.jpg"],
+["Cadeira flexora","2 × 12","Puxa os calcanhares para trás sem balanço.","curl.jpg"],
+["Shoulder press","2 × 12","Empurra para cima sem bloquear os cotovelos.","shoulder.jpg"],
+["Prancha","2 × 20 segundos","Corpo alinhado e abdómen contraído.","plank.jpg"]]},
 C:{name:"Quinta-feira · Corpo inteiro C",items:[
-["Cadeira extensora","2 × 12","Estende os joelhos com controlo."],
-["Peso morto romeno","2 × 12","Leva a bacia para trás, mantendo os halteres junto às pernas."],
-["Puxada frontal","2 × 12","Puxa à frente até à parte superior do peito."],
-["Cadeira abdutora","2 × 15","Abre as pernas e regressa devagar."],
-["Bíceps com halteres","2 × 12","Mantém os cotovelos junto ao tronco."],
-["Tríceps na polia","2 × 12","Empurra a corda para baixo, cotovelos estáveis."]]},
+["Cadeira extensora","2 × 12","Estende os joelhos com controlo.","extension.jpg"],
+["Peso morto romeno","2 × 12","Leva a bacia para trás, mantendo os halteres junto às pernas.","deadlift.jpg"],
+["Puxada frontal","2 × 12","Puxa à frente até à parte superior do peito.","shoulder.jpg"],
+["Cadeira abdutora","2 × 15","Abre as pernas e regressa devagar.","abductor.jpg"],
+["Bíceps com halteres","2 × 12","Mantém os cotovelos junto ao tronco.","shoulder.jpg"],
+["Tríceps na polia","2 × 12","Empurra a corda para baixo, cotovelos estáveis.","shoulder.jpg"]]},
 D:{name:"Sessão extra · Recuperação ativa",items:[
-["Caminhada","15–20 min","Ritmo confortável."],["Mobilidade de anca","2 × 8","Movimentos suaves e sem dor."],["Mobilidade de ombros","2 × 8","Movimentos controlados."],["Dead bug","2 × 10 por lado","Mantém a lombar estável."]]}
+["Caminhada","15–20 min","Ritmo confortável.","bike.jpg"],["Mobilidade de anca","2 × 8","Movimentos suaves e sem dor.","squat.jpg"],["Mobilidade de ombros","2 × 8","Movimentos controlados.","shoulder.jpg"],["Dead bug","2 × 10 por lado","Mantém a lombar estável.","plank.jpg"]]}
 };
 let active="A";let week="1";
 const $=id=>document.getElementById(id);
-function renderPlan(){let p=plans[active];$("workout").innerHTML="<h3>"+p.name+"</h3>"+p.items.map((x,i)=>`<div class="exercise"><div class="exhead"><b>${i+1}. ${x[0]}</b><label><input type="checkbox" data-ex="${i}" aria-label="Concluído"> Feito</label></div><div class="reps">${x[1]}</div><div class="tip">${x[2]}</div></div>`).join("");document.querySelectorAll("[data-plan]").forEach(b=>b.classList.toggle("active",b.dataset.plan===active));}
+function renderPlan(){let p=plans[active];$("workout").innerHTML="<h3>"+p.name+"</h3><p class=\"sub\">Imagens de referência para reconhecer os movimentos. Confirma a execução e a regulação das máquinas com o instrutor.</p>"+p.items.map((x,i)=>`<div class="exercise"><img src="${x[3]}" alt="Imagem de referência: ${x[0]}" loading="lazy"><div class="exbody"><div class="exhead"><b>${i+1}. ${x[0]}</b><label><input type="checkbox" data-ex="${i}" aria-label="Concluído"> Feito</label></div><div class="reps">${x[1]}</div><div class="tip">${x[2]}</div></div></div>`).join("");document.querySelectorAll("[data-plan]").forEach(b=>b.classList.toggle("active",b.dataset.plan===active));}
 document.querySelectorAll("[data-plan]").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.plan;renderPlan()}));
 function key(){return "gym-week-"+week}
 function load(){let d=JSON.parse(localStorage.getItem(key())||"{}");$("loads").value=d.loads||"";$("notes").value=d.notes||"";$("checks").innerHTML=["Segunda · Treino A","Terça · Treino B","Quinta · Treino C"].map((x,i)=>`<label class="field"><input type="checkbox" data-day="${i}" ${d.days?.[i]?"checked":""} style="width:auto;margin-right:8px">${x}</label>`).join("");}
