@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#173f35">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Meu Ginásio">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>O Meu Ginásio</title>
+<style>
+:root{--green:#173f35;--mint:#e8f2ed;--ink:#18231f;--muted:#65736c;--line:#dce5df;--paper:#f7faf8;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:var(--green);color:white;padding:24px 18px 20px;border-radius:0 0 24px 24px}
+header small{opacity:.8}h1{font-size:27px;margin:6px 0}header p{margin:0;opacity:.9;font-size:14px}
+main{max-width:680px;margin:auto;padding:16px 14px 40px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:16px;margin:12px 0;box-shadow:0 2px 8px #183c2c0a}
+h2{font-size:19px;margin:0 0 12px}.sub{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--mint);border-radius:12px;padding:11px;text-align:center}.stat b{display:block;font-size:20px}.stat span{font-size:11px;color:var(--muted)}
+.timeline{display:grid;gap:10px}.time{display:flex;justify-content:space-between;gap:10px;font-size:14px}.time b{font-weight:650}
+.tabs{display:flex;gap:7px;overflow:auto;margin:12px 0}.tab,button{border:1px solid var(--line);background:white;border-radius:999px;padding:10px 14px;font-weight:650;color:var(--ink);cursor:pointer}.tab.active,.primary{background:var(--green);color:white;border-color:var(--green)}
+.exercise{padding:13px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border:0}.exhead{display:flex;justify-content:space-between;gap:10px}.exercise label{display:flex;align-items:center;gap:9px}.exercise input[type=checkbox]{width:19px;height:19px;accent-color:var(--green)}.reps{color:var(--green);font-size:13px;font-weight:700;margin-top:5px}.tip{font-size:13px;color:var(--muted);margin-top:5px}
+input,textarea,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;background:white;color:var(--ink)}textarea{min-height:75px}
+label.field{display:block;font-size:13px;color:var(--muted);margin:9px 0}label.field input{margin-top:5px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.progress{height:9px;background:#e5ece7;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--green);width:0}
+button.primary{border-radius:11px;width:100%;padding:13px;margin-top:10px}.notice{background:var(--mint);padding:12px;border-radius:12px;font-size:13px;color:#294c3d}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:12px}
+@media(min-width:600px){main{padding-top:22px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+</style>
+</head>
+<body>
+<header><small>O TEU GUIA DE TREINO</small><h1>O Meu Ginásio 💪</h1><p>Perder gordura · Ganhar músculo · Mais força</p></header>
+<main>
+<section class="card">
+<h2>O teu plano</h2><div class="grid"><div class="stat"><b>3</b><span>treinos por semana</span></div><div class="stat"><b>30–45</b><span>minutos</span></div><div class="stat"><b>06:30</b><span>hora de acordar</span></div></div>
+<p class="sub" style="margin-bottom:0">Segunda, terça e quinta. Quarta-feira é descanso. Sexta-feira fica reservada à natação do Sebastião.</p>
+</section>
+<section class="card">
+<h2>Rotina da manhã</h2><div class="timeline">
+<div class="time"><b>06:30</b><span>Acordar e rotina de casa de banho (20 min)</span></div>
+<div class="time"><b>06:50</b><span>Vestir roupa de treino e beber água</span></div>
+<div class="time"><b>06:55</b><span>Sair de casa</span></div>
+<div class="time"><b>07:00</b><span>Chegar ao ginásio e começar</span></div>
+<div class="time"><b>07:00–07:30</b><span>Musculação</span></div>
+<div class="time"><b>07:30–07:37</b><span>Cardio curto</span></div>
+<div class="time"><b>07:37</b><span>Sair do ginásio</span></div>
+<div class="time"><b>07:45</b><span><b>Chegada prevista a casa</b></span></div>
+</div><p class="sub">Tens margem até às 08:30. O horário é uma referência; não apresses a técnica para cumprir os minutos.</p></section>
+<section class="card">
+<h2>Os meus treinos</h2><div class="tabs">
+<button class="tab active" data-plan="A">Seg · A</button><button class="tab" data-plan="B">Ter · B</button><button class="tab" data-plan="C">Qui · C</button><button class="tab" data-plan="D">Extra</button>
+</div><div id="workout"></div><div class="notice" style="margin-top:12px">Começa com cargas leves. Descansa 60–90 segundos quando necessário. Se a sessão estiver apertada, dá prioridade à musculação e termina o cardio noutro dia.</div></section>
+<section class="card">
+<h2>Diário de treino</h2><label class="field">Semana<select id="week"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+<div id="checks"></div><label class="field">Cargas utilizadas e repetições<textarea id="loads" placeholder="Ex.: Leg press 20 kg × 12; puxada 15 kg × 12..."></textarea></label>
+<label class="field">Como me senti?<textarea id="notes" placeholder="Energia, sono, dificuldades, evolução..."></textarea></label>
+<button class="primary" id="save">Guardar diário neste telemóvel</button><p class="sub" id="saved"></p>
+</section>
+<section class="card">
+<h2>A minha evolução</h2><div class="row">
+<label class="field">Peso (kg)<input id="weight" type="number" step="0.1" placeholder="Ex.: 69"></label>
+<label class="field">Cintura (cm)<input id="waist" type="number" step="0.5" placeholder="Medida"></label>
+<label class="field">Anca (cm)<input id="hip" type="number" step="0.5" placeholder="Medida"></label>
+<label class="field">Data<input id="date" type="date"></label></div>
+<button class="primary" id="measure">Guardar medidas</button><div id="history" class="sub" style="margin-top:12px"></div>
+</section>
+<section class="card"><h2>Quarto dia opcional</h2><p class="sub">Só quando estiveres recuperada: caminhada de 15–20 minutos, mobilidade suave e dead bug. Não é obrigatório.</p></section>
+<footer>Plano inicial de 4 semanas · Ajusta cargas à tua condição física. Interrompe se sentires dor aguda, tonturas ou mal-estar.</footer>
+</main>
+<script>
+const plans={
+A:{name:"Segunda-feira · Corpo inteiro A",items:[
+["Leg press","2 × 12","Pés à largura dos ombros; desce sem levantar a bacia."],
+["Puxada frontal","2 × 12","Puxa a barra à frente, em direção à parte superior do peito."],
+["Hip thrust","2 × 12","Eleva a bacia e contrai os glúteos sem arquear as costas."],
+["Chest press","2 × 12","Empurra as pegas à altura do peito, regressando devagar."],
+["Abdominal na máquina","2 × 12","Executa lentamente, sem puxar o pescoço."]]},
+B:{name:"Terça-feira · Corpo inteiro B",items:[
+["Agachamento goblet","2 × 12","Halter junto ao peito; desce com controlo."],
+["Remada sentada","2 × 12","Puxa os cotovelos para trás, mantendo o tronco estável."],
+["Cadeira flexora","2 × 12","Puxa os calcanhares para trás sem balanço."],
+["Shoulder press","2 × 12","Empurra para cima sem bloquear os cotovelos."],
+["Prancha","2 × 20 segundos","Corpo alinhado e abdómen contraído."]]},
+C:{name:"Quinta-feira · Corpo inteiro C",items:[
+["Cadeira extensora","2 × 12","Estende os joelhos com controlo."],
+["Peso morto romeno","2 × 12","Leva a bacia para trás, mantendo os halteres junto às pernas."],
+["Puxada frontal","2 × 12","Puxa à frente até à parte superior do peito."],
+["Cadeira abdutora","2 × 15","Abre as pernas e regressa devagar."],
+["Bíceps com halteres","2 × 12","Mantém os cotovelos junto ao tronco."],
+["Tríceps na polia","2 × 12","Empurra a corda para baixo, cotovelos estáveis."]]},
+D:{name:"Sessão extra · Recuperação ativa",items:[
+["Caminhada","15–20 min","Ritmo confortável."],["Mobilidade de anca","2 × 8","Movimentos suaves e sem dor."],["Mobilidade de ombros","2 × 8","Movimentos controlados."],["Dead bug","2 × 10 por lado","Mantém a lombar estável."]]}
+};
+let active="A";let week="1";
+const $=id=>document.getElementById(id);
+function renderPlan(){let p=plans[active];$("workout").innerHTML="<h3>"+p.name+"</h3>"+p.items.map((x,i)=>`<div class="exercise"><div class="exhead"><b>${i+1}. ${x[0]}</b><label><input type="checkbox" data-ex="${i}" aria-label="Concluído"> Feito</label></div><div class="reps">${x[1]}</div><div class="tip">${x[2]}</div></div>`).join("");document.querySelectorAll("[data-plan]").forEach(b=>b.classList.toggle("active",b.dataset.plan===active));}
+document.querySelectorAll("[data-plan]").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.plan;renderPlan()}));
+function key(){return "gym-week-"+week}
+function load(){let d=JSON.parse(localStorage.getItem(key())||"{}");$("loads").value=d.loads||"";$("notes").value=d.notes||"";$("checks").innerHTML=["Segunda · Treino A","Terça · Treino B","Quinta · Treino C"].map((x,i)=>`<label class="field"><input type="checkbox" data-day="${i}" ${d.days?.[i]?"checked":""} style="width:auto;margin-right:8px">${x}</label>`).join("");}
+$("week").addEventListener("change",e=>{week=e.target.value;load()});
+$("save").addEventListener("click",()=>{let old=JSON.parse(localStorage.getItem(key())||"{}");old.loads=$("loads").value;old.notes=$("notes").value;old.days=[...document.querySelectorAll("[data-day]")].map(x=>x.checked);localStorage.setItem(key(),JSON.stringify(old));$("saved").textContent="Diário guardado neste dispositivo ✓";});
+$("measure").addEventListener("click",()=>{let arr=JSON.parse(localStorage.getItem("gym-measures")||"[]");arr.push({date:$("date").value,weight:$("weight").value,waist:$("waist").value,hip:$("hip").value});localStorage.setItem("gym-measures",JSON.stringify(arr));showMeasures();});
+function showMeasures(){let arr=JSON.parse(localStorage.getItem("gym-measures")||"[]");$("history").innerHTML=arr.slice(-5).reverse().map(x=>`${x.date||"Sem data"} · ${x.weight||"—"} kg · cintura ${x.waist||"—"} cm · anca ${x.hip||"—"} cm`).join("<br>")||"Ainda não tens medidas guardadas."}
+renderPlan();load();showMeasures();
+</script>
+<script>if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));</script></body></html>
